@@ -14,10 +14,16 @@ const renderPokemon = (pokemon) => {
   }
   pokemonVisible = pokemon;
 
+  let imagen = sprites.other.home.front_default;
+  if (!imagen) {
+    imagen = sprites.other["official-artwork"].front_default;
+  }
+  
+  //<img  src="${sprites.other.home.front_default}"/>
   return caja.innerHTML = `
      <div class="pokemon"> 
          <p class="id-pokemon">#${id}</p>
-         <img  src="${sprites.other.home.front_default}"/>
+         <img  src="${imagen}"/>
          <h2>${name.toUpperCase()}</h2>
          <span class="exp">EXPERIENCE: ${pokemon.base_experience}</span>
          <div class="tipo-pokemon">
@@ -59,7 +65,11 @@ const buscarPokemon = async (e) => {
   const pokemonBuscado = +inputPokemon.value;
  
   if ((!pokemonBuscado) || (pokemonBuscado <= 0)) {
-    return caja.innerHTML = `<p>Debe ingresar un n° entero positivo</p>`;
+    return caja.innerHTML = `
+    <div class="contenedor-mensaje">
+      <img  src="./assets/img/pokemon-mensaje-2.png"/>
+      <p>Debe ingresar un n° entero positivo</p>
+    </div>`;
   }
 
   // Traigo el elemento de la api
@@ -69,7 +79,11 @@ const buscarPokemon = async (e) => {
   // valido que el elemento no sea undefined, ni este en la lista
   if(!fetchedPokemon.id) {
     form.reset();
-    return caja.innerHTML = `<p>No existe un POKEMON con ese ID</p>`;
+    return caja.innerHTML = `
+    <div class="contenedor-mensaje">
+      <img  src="./assets/img/pokemon-mensaje.png"/>
+      <p>No existe un POKEMON con ese ID</p>
+    </div>`;
   }
   // Si paso la validacion, muestro la card del Pokemon en cuestion.
   renderPokemon(fetchedPokemon);
