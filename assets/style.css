@@ -6,8 +6,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  --Amarillo: #d9973bf4;
+  --crema: #e3f2b7;
+  --cemento: #D7D7D7;
+  --tiza: #f6f9f5;
+  --gray: #7e7373;
+  --black: #000000;
+  --grisMedio: #404244;
+  --grisOscuro: #252525;
+}
+
 body {
-  background: #252525;
+  background: var(--Amarillo);
+  background-image: url(./img/Fondo_Naranja.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   font-family: "Poppins", sans-serif;
 }
 
@@ -71,7 +86,12 @@ input::placeholder {
 }
 
 .pokemon {
-  background: #404244;
+  /* background: #404244; */
+  background: var(--grisMedio);
+  background-image: url(./img/Fondo_gris.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -90,8 +110,9 @@ input::placeholder {
 }
 
 .pokemon .exp {
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 16PX;
+  font-weight: 900;
+  color: #f56262;
 }
 
 .id-pokemon {

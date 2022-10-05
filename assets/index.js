@@ -19,7 +19,7 @@ const renderPokemon = (pokemon) => {
          <p class="id-pokemon">#${id}</p>
          <img  src="${sprites.other.home.front_default}"/>
          <h2>${name.toUpperCase()}</h2>
-         <span class="exp">EXP: ${pokemon.base_experience}</span>
+         <span class="exp">EXPERIENCE: ${pokemon.base_experience}</span>
          <div class="tipo-pokemon">
              ${types
                .map((tipo) => {
