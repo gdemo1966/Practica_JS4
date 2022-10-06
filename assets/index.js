@@ -51,7 +51,8 @@ const hideCard = (pokemon) => {
 /* Función para traernos la data del pokemon. */
 const fetchPokemon = async (pokeNro) => { 
   const res = await fetch(`${baseURL}${pokeNro}`); // Llamo a la api con el nro del pokemon indicado
-  // Testeo si el fetch tir[o algo valido.
+  
+  // Testeo si el fetch tiró algo valido.
   if (!res.ok) {
     return "";
   } 
@@ -74,9 +75,8 @@ const buscarPokemon = async (e) => {
 
   // Traigo el elemento de la api
   const fetchedPokemon = await fetchPokemon(pokemonBuscado);
-  // console.log(fetchedPokemon)
 
-  // valido que el elemento no sea undefined, ni este en la lista
+  // Valido que el elemento no sea undefined, ni este en la lista
   if(!fetchedPokemon.id) {
     form.reset();
     return caja.innerHTML = `
@@ -85,7 +85,8 @@ const buscarPokemon = async (e) => {
       <p>No existe un POKEMON con ese ID</p>
     </div>`;
   }
-  // Si paso la validacion, muestro la card del Pokemon en cuestion.
+
+  // Si paso la validación, muestro la card del Pokemon en cuestión.
   renderPokemon(fetchedPokemon);
   hideCard(fetchedPokemon);
   form.reset()
@@ -97,9 +98,7 @@ const init = () => {
   renderPokemon(pokemonVisible);
   hideCard(pokemonVisible);
   form.addEventListener("submit", buscarPokemon);
-  // cardContainer.addEventListener("click", removeCity);
 }
 
-init();
 /*Llamamos la función init */
 init();
